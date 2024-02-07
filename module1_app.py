@@ -41,17 +41,17 @@ if age_category=='CHILDREN(4-11 YEARS)':
 
     #A2
     A2_selectbox = st.selectbox('Q2-SHE/HE USUALLY CONCENTRATES MORE ON THE WHOLE PICTURE,RATHER THAN SMALL DETAILS',['YES','NO'])
-    A2 = 1 if A2_selectbox == 'YES' else 0
+    A2 = 1 if A2_selectbox == 'NO' else 0
 
 
     #A3
     A3_selectbox = st.selectbox('Q3-IN A SOCIAL GROUP, SHE/HE CAN EASILY KEEP TRACK OF SEVERAL DIFFERENT PEOPLE’S CONVERSATIONS',['YES','NO'])
-    A3 = 1 if A3_selectbox == 'YES' else 0
+    A3 = 1 if A3_selectbox == 'NO' else 0
 
 
     #A4
     A4_selectbox = st.selectbox('Q4-SHE/HE FINDS IT EASY TO GO BACK AND FORTH BETWEEN DIFFERENT ACTIVITIES',['YES','NO'])
-    A4 = 1 if A4_selectbox == 'YES' else 0
+    A4 = 1 if A4_selectbox == 'NO' else 0
 
     #A5
     A5_selectbox = st.selectbox('Q5-SHE/HE DOESN’T KNOW HOW TO KEEP A CONVERSATION GOING WITH HIS/HER PEERS ',['YES','NO'])
@@ -59,7 +59,7 @@ if age_category=='CHILDREN(4-11 YEARS)':
 
     #A6
     A6_selectbox = st.selectbox('Q6-SHE/HE IS GOOD AT SOCIAL CHIT-CHAT ',['YES','NO'])
-    A6 = 1 if A6_selectbox == 'YES' else 0
+    A6 = 1 if A6_selectbox == 'NO' else 0
 
 
     #A7
@@ -69,12 +69,12 @@ if age_category=='CHILDREN(4-11 YEARS)':
 
     #A8
     A8_selectbox = st.selectbox('Q8-WHEN SHE/HE WAS IN PRESCHOOL, SHE/HE USED TO ENJOY PLAYING GAMES INVOLVING PRETENDING WITH OTHER CHILDREN ',['YES','NO'])
-    A8 = 1 if A8_selectbox == 'YES' else 0
+    A8 = 1 if A8_selectbox == 'NO' else 0
 
 
     #A9
     A9_selectbox = st.selectbox('Q9-SHE/HE FINDS IT EASY TO WORK OUT WHAT SOMEONE IS THINKING OR FEELING JUST BY LOOKING AT THEIR FACE ',['YES','NO'])
-    A9 = 1 if A9_selectbox == 'YES' else 0
+    A9 = 1 if A9_selectbox == 'NO' else 0
 
 
     #A10
@@ -139,7 +139,7 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
     relation=st.selectbox('WHO IS COMPLETING THE TEST',sorted(df1['relation'].unique().tolist()))
 
     #A1
-    A1_selectbox1 = st.selectbox('Q1-SHE/HE OFTEN NOTICES SMALL SOUNDS WHEN OTHERS DO NOT',['YES','NO'])
+    A1_selectbox1 = st.selectbox('Q1-I often notice small sounds when others do not',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
     A1_Score = 1 if A1_selectbox1 == 'YES' else 0
 
 
