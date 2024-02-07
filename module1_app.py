@@ -101,6 +101,7 @@ if age_category=='CHILDREN(4-11 YEARS)':
             st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD).")
 
 if age_category=='ADULTS(18 YEARS AND OLDER)':
+
     with open('dataframe1_adult.pkl','rb') as file:
         df1 = pickle.load(file)
 
@@ -140,50 +141,50 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
 
     #A1
     A1_selectbox1 = st.selectbox('Q1-I often notice small sounds when others do not',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
-    A1_Score = 1 if A1_selectbox1 == 'YES' else 0
+    A1_Score = 1 if A1_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
 
 
     #A2
-    A2_selectbox1 = st.selectbox('Q2-SHE/HE USUALLY CONCENTRATES MORE ON THE WHOLE PICTURE,RATHER THAN SMALL DETAILS',['YES','NO'])
-    A2_Score = 1 if A2_selectbox1 == 'YES' else 0
+    A2_selectbox1 = st.selectbox('Q2-I usually concentrate more on the whole picture, rather than the small details ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A2_Score = 1 if A2_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
 
     #A3
-    A3_selectbox1 = st.selectbox('Q3-IN A SOCIAL GROUP, SHE/HE CAN EASILY KEEP TRACK OF SEVERAL DIFFERENT PEOPLE’S CONVERSATIONS',['YES','NO'])
-    A3_Score = 1 if A3_selectbox1 == 'YES' else 0
+    A3_selectbox1 = st.selectbox('Q3-I find it easy to do more than one thing at once',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A3_Score = 1 if A3_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
 
     #A4
-    A4_selectbox1 = st.selectbox('Q4-SHE/HE FINDS IT EASY TO GO BACK AND FORTH BETWEEN DIFFERENT ACTIVITIES',['YES','NO'])
-    A4_Score = 1 if A4_selectbox1 == 'YES' else 0
+    A4_selectbox1 = st.selectbox('Q4-If there is an interruption, I can switch back to what I was doing very quickly',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A4_Score = 1 if A4_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
     #A5
-    A5_selectbox1 = st.selectbox('Q5-SHE/HE DOESN’T KNOW HOW TO KEEP A CONVERSATION GOING WITH HIS/HER PEERS ',['YES','NO'])
-    A5_Score = 1 if A5_selectbox1 == 'YES' else 0
+    A5_selectbox1 = st.selectbox('Q5-I find it easy to ‘read between the lines’ when someone is talking to me ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A5_Score = 1 if A5_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
     #A6
-    A6_selectbox1 = st.selectbox('Q6-SHE/HE IS GOOD AT SOCIAL CHIT-CHAT ',['YES','NO'])
-    A6_Score = 1 if A6_selectbox1 == 'YES' else 0
+    A6_selectbox1 = st.selectbox('Q6-I know how to tell if someone listening to me is getting bored',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A6_Score = 1 if A6_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
 
     #A7
-    A7_selectbox1 = st.selectbox('Q7-WHEN SHE/HE IS READ A STORY, SHE/HE FINDS IT DIFFICULT TO WORK OUT THE CHARACTER’S INTENTIONS OR FEELINGS ',['YES','NO'])
-    A7_Score = 1 if A7_selectbox1 == 'YES' else 0
+    A7_selectbox1 = st.selectbox('Q7-When I’m reading a story I find it difficult to work out the characters’ intentions ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A7_Score = 1 if A7_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
 
 
     #A8
-    A8_selectbox1 = st.selectbox('Q8-WHEN SHE/HE WAS IN PRESCHOOL, SHE/HE USED TO ENJOY PLAYING GAMES INVOLVING PRETENDING WITH OTHER CHILDREN ',['YES','NO'])
-    A8_Score = 1 if A8_selectbox1 == 'YES' else 0
+    A8_selectbox1 = st.selectbox('Q8-I like to collect information about categories of things (e.g. types of car, types of bird, types of train, types of plant etc) ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A8_Score = 1 if A8_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
 
 
     #A9
-    A9_selectbox1 = st.selectbox('Q9-SHE/HE FINDS IT EASY TO WORK OUT WHAT SOMEONE IS THINKING OR FEELING JUST BY LOOKING AT THEIR FACE ',['YES','NO'])
-    A9_Score = 1 if A9_selectbox1 == 'YES' else 0
+    A9_selectbox1 = st.selectbox('Q9I find it easy to work out what someone is thinking or feeling just by looking at their face ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A9_Score = 1 if A9_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
 
     #A10
-    A10_selectbox1 = st.selectbox('Q10-SHE/HE FINDS IT HARD TO MAKE NEW FRIENDS',['YES','NO'])
-    A10_Score = 1 if A10_selectbox1 == 'YES' else 0
+    A10_selectbox1 = st.selectbox('Q10-I find it difficult to work out people’s intentions',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
+    A10_Score = 1 if A10_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
 
 
     #score
