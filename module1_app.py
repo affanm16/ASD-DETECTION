@@ -120,7 +120,7 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
     if age % 1 != 0:
         st.error("Please enter a valid age")
     elif age > 70 or age <18 :
-        st.error("Age must be between 18 and 100")
+        st.error("Age must be between 18 and 70")
     else:
         st.success(" Age entered: {}".format(age))
 
@@ -166,26 +166,21 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
     A6_selectbox1 = st.selectbox('Q6-I know how to tell if someone listening to me is getting bored',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
     A6_Score = 1 if A6_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
-
     #A7
     A7_selectbox1 = st.selectbox('Q7-When I’m reading a story I find it difficult to work out the characters’ intentions ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
     A7_Score = 1 if A7_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
-
 
     #A8
     A8_selectbox1 = st.selectbox('Q8-I like to collect information about categories of things (e.g. types of car, types of bird, types of train, types of plant etc) ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
     A8_Score = 1 if A8_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
 
-
     #A9
     A9_selectbox1 = st.selectbox('Q9I find it easy to work out what someone is thinking or feeling just by looking at their face ',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
     A9_Score = 1 if A9_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
 
-
     #A10
     A10_selectbox1 = st.selectbox('Q10-I find it difficult to work out people’s intentions',['Definitely Agree','Slightly Agree', 'Slightly Disagree', 'Definitely Disagree' ])
     A10_Score = 1 if A10_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
-
 
     #score
     result=A1_Score+A2_Score+A3_Score+A4_Score+A5_Score+A6_Score+A7_Score+A8_Score+A9_Score+A10_Score
