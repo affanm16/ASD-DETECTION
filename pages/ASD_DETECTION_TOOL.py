@@ -8,36 +8,6 @@ st.header('DETECTION OF ASD USING MACHINE LEARNING', divider='rainbow')
 
 import streamlit as st
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 with open('dataframe1.pkl','rb') as file:
     df = pickle.load(file)
 
@@ -147,13 +117,6 @@ if age_category=='CHILDREN(4-11 YEARS)':
             st.info('The assessment results are indicative, not diagnostic, and should prompt individuals to seek comprehensive evaluation by qualified healthcare professionals for an accurate diagnosis of ASD.', icon="ℹ️")
         else:
             st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD).")
-
-
-
-
-
-
-
 if age_category=='ADULTS(18 YEARS AND OLDER)':
 
     with open('dataframe1_adult.pkl','rb') as file:
@@ -263,13 +226,6 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
             st.info('The assessment results are indicative, not diagnostic, and should prompt individuals to seek comprehensive evaluation by qualified healthcare professionals for an accurate diagnosis of ASD.', icon="ℹ️")
         else:
             st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD)......")
-
-
-
-
-
-
-
 if age_category=='TEENS(12-17 YEARS)':
 
     with open('dataframe1_adolescents.pkl','rb') as file:
@@ -416,12 +372,6 @@ if age_category=='TEENS(12-17 YEARS)':
         else:
             st.text("The model predicts that the child has Autism Spectrum Disorder (ASD)!!!")
             st.info('The assessment results are indicative, not diagnostic, and should prompt individuals to seek comprehensive evaluation by qualified healthcare professionals for an accurate diagnosis of ASD.', icon="ℹ️")
-
-
-
-
-
-
 
 if age_category=='TODDLER(1-3 YEARS)':
     with open('dataframe1_toddler.pkl','rb') as file:
