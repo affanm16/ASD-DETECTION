@@ -10,8 +10,6 @@ with open('module_1_pipeline.pkl','rb') as file:
     pipeline = pickle.load(file)
 
 age_category=st.selectbox('SELECT AGE CATEGORY',['TODDLER(1-3 YEARS)','CHILDREN(4-11 YEARS)','TEENS(12-17 YEARS)','ADULTS(18 YEARS AND OLDER)'])
-if age_category=='TODDLER(1-3 YEARS)':
-    pass
 if age_category=='CHILDREN(4-11 YEARS)':
 
     st.header('Complete the form by answering the following questions')
@@ -100,6 +98,12 @@ if age_category=='CHILDREN(4-11 YEARS)':
         else:
             st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD).")
 
+
+
+
+
+
+
 if age_category=='ADULTS(18 YEARS AND OLDER)':
 
     with open('dataframe1_adult.pkl','rb') as file:
@@ -109,8 +113,6 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
         pipeline2 = pickle.load(file)
         # 'A1_Score','A2_Score','A3_Score','A4_Score','A5_Score','A6_Score','A7_Score','A8_Score','A9_Score','A10_Score','result'
     st.header('Complete the form by answering the following questions')
-    #score
-    #age
     import streamlit as st
 
     # Define the input widget
@@ -199,3 +201,245 @@ if age_category=='ADULTS(18 YEARS AND OLDER)':
             st.text("The model predicts that the child has Autism Spectrum Disorder (ASD).....")
         else:
             st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD)......")
+
+
+
+
+
+
+
+if age_category=='TEENS(12-17 YEARS)':
+
+    with open('dataframe1_adolescents.pkl','rb') as file:
+        df4 = pickle.load(file)
+
+    with open('module_1_pipeline_adolescent.pkl','rb') as file:
+        pipeline4 = pickle.load(file)
+    
+    st.header('Complete the form by answering the following questions')
+    #score
+    #age
+    import streamlit as st
+    # Define the input widget
+    age = st.number_input(label="ENTER THE AGE", min_value=1, max_value=3, step=1)
+
+    # Validate the input
+    if age % 1 != 0:
+        st.error("Please enter a valid age")
+    elif age > 17 or age <12 :
+        st.error("Age must be between 12 and 17")
+    else:
+        st.success(" Age entered: {}".format(age))
+
+    #gender
+    gender_selectbox=st.selectbox('SELECT GENDER',['MALE','FEMALE'])
+    Sex='0' if gender_selectbox=='MALE' else '1'
+
+    #Jaundice
+    jaundice_selectbox=st.selectbox('BORN WITH JAUNDICE',['YES','NO'])
+    born_with_jaundice='1' if jaundice_selectbox=='YES' else '0'
+    #FAMILY MEM WITH PDD
+    family_mem_with_pdd=st.selectbox('FAMILY MEMBER WITH PDD',['YES','NO'])
+    family_member_with_PDD='1' if family_mem_with_pdd=='YES' else 0
+    
+    ethinicity_dict={
+    0: 'White-European',
+    1: 'Black',
+    2: 'White-European',
+    3: 'Hispanic',
+    4: 'Asian',
+    5: 'Black',
+    6: 'Hispanic',
+    7: 'Latino',
+    8: 'Middle Eastern',
+    9: 'Others',
+    10: 'South Asian',
+    11: 'White-European',
+    12:'other'
+    }
+    ethinicity_input=st.selectbox('ETHINICITY',sorted(list(ethinicity_dict.values())))
+    label_ethnicity = None
+    for key, value in ethinicity_dict.items():
+        if value == ethinicity_input:
+            label_ethnicity = key
+            break
+    
+    # Store user input in the DataFrame
+    dict_relation={
+        
+    0: 'Health care professional',
+    1: 'Others',
+    2: 'Parent',
+    3: 'Relative',
+    4: 'Self'
+    }
+    relation_input=st.selectbox('WHO IS COMPLETING THE TEST',sorted(list(dict_relation.values())))
+    label_whos_completing_test = None
+    for key, value in dict_relation.items():
+        if value == relation_input:
+            label_whos_completing_test = key
+            break
+    label_country='United Kingdom'
+    #used app before
+    used_before_selectbox=st.selectbox('USED APP BEFORE?',['YES','NO'])
+    used_screening_app_before=1 if used_before_selectbox=='YES' else 0
+    #A1
+    A1_selectbox1 = st.selectbox('Q1-She/he notices patterns in things all the time ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q1_Score = 1 if A1_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
+
+
+    #A2
+    A2_selectbox1 = st.selectbox('Q2-S/he usually concentrates more on the whole picture, rather than the small details',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q2_Score = 1 if A2_selectbox1 == 'Slightly Disagree' or 'Definitely Disagree' else 0
+
+
+    #A3
+    A3_selectbox1 = st.selectbox('Q3-In a social group, s/he can easily keep track of several different people’s conversations  ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q3_Score = 1 if A3_selectbox1 =='Slightly Disagree' or 'Definitely Disagree' else 0
+
+
+
+    #A4
+    A4_selectbox1 = st.selectbox('Q4-If there is an interruption, s/he can switch back to what s/he was doing very quickly ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q4_Score = 1 if A4_selectbox1 =='Slightly Disagree' or 'Definitely Disagree' else 0
+
+    #A5
+    A5_selectbox1 = st.selectbox('Q5-S/he frequently finds that s/he doesn’t know how to keep a conversation going ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q5_Score= 1 if A5_selectbox1 == 'Definitely Agree' or 'Slightly Agree' else 0
+    #A6
+    A6_selectbox1 = st.selectbox('Q6-S/he is good at social chit-chat ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q6_Score = 1 if A6_selectbox1 =='Slightly Disagree' or 'Definitely Disagree' else 0
+
+    #A7
+    A7_selectbox1 = st.selectbox('Q7-When s/he was younger, s/he used to enjoy playing games involving pretending with other children ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q7_Score = 1 if A7_selectbox1 =='Slightly Disagree' or 'Definitely Disagree' else 0
+
+    #A8
+    A8_selectbox1 = st.selectbox('Q8-S/he finds it difficult to imagine what it would be like to be someone else ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q8_Score = 1 if A8_selectbox1 =='Definitely Agree' or 'Slightly Agree' else 0
+
+    #A9
+    A9_selectbox1 = st.selectbox('Q9-S/he finds social situations easy',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q9_Score = 1 if A9_selectbox1 =='Slightly Disagree' or 'Definitely Disagree' else 0
+
+    #A10
+    A10_selectbox1 = st.selectbox('Q10-S/he finds it hard to make new friends ',['Definitely Agree' ,'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'])
+    Q10_Score = 1 if A10_selectbox1 =='Definitely Agree' or 'Slightly Agree' else 0
+
+
+    #PREDICTION
+    if st.button('Predict'):
+        # age	gender	born_with_jaundice	family_member_with_PDD	label_whos_completing_test	label_ethnicity	label_country	used_screening_app_before	Q1_Score	Q2_Score	Q3_Score	Q4_Score	Q5_Score	Q6_Score	Q7_Score	Q8_Score	Q9_Score	Q10_Score	
+        # form a dataframe
+        data=[[age,gender,born_with_jaundice,family_member_with_PDD,label_whos_completing_test,label_ethnicity,label_country,used_screening_app_before,Q1_Score,Q2_Score,Q3_Score,Q4_Score,Q5_Score,Q6_Score,Q7_Score,Q8_Score,Q9_Score,Q10_Score]]
+        columns=['age','gender','born_with_jaundice','family_member_with_PDD','label_whos_completing_test','label_ethnicity','label_country','used_screening_app_before','Q1_Score','Q2_Score','Q3_Score','Q4_Score','Q5_Score','Q6_Score','Q7_Score','Q8_Score','Q9_Score','Q10_Score']
+        # Convert to DataFrame
+        one_df = pd.DataFrame(data, columns=columns)
+        # predict
+        prediction=pipeline4.predict(one_df)[0]
+        if prediction==0:
+            st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD)!!!")
+        else:
+            st.text("The model predicts that the child has Autism Spectrum Disorder (ASD)!!!")
+
+
+
+
+
+
+
+if age_category=='TODDLER(1-3 YEARS)':
+    with open('dataframe1_toddler.pkl','rb') as file:
+        df_toddler = pickle.load(file)
+
+    with open('module_1_pipeline_toddler.pkl','rb') as file:
+        pipeline4 = pickle.load(file)
+
+    st.header('Complete the form by answering the following questions')
+    #score
+    #age
+    Age_Mons=st.selectbox('SELECT AGE(YEARS)',['1','2','3'])
+
+    #gender
+    gender_selectbox=st.selectbox('SELECT GENDER',['MALE','FEMALE'])
+    Sex='m' if gender_selectbox=='MALE' else 'f'
+
+    #Jaundice
+    jaundice_selectbox=st.selectbox('BORN WITH JAUNDICE',['YES','NO'])
+    Jaundice='yes' if jaundice_selectbox=='YES' else 'no'
+
+    #country
+    Ethnicity='middle eastern'
+
+
+    #relation
+    who_completed_the_test=st.selectbox('WHO IS COMPLETING THE TEST',sorted(df['Who completed the test'].unique().tolist()))
+
+    #family_asd
+    Family_mem_with_ASD='no'
+
+    #A1
+    A1_selectbox = st.selectbox('Q1-Does your child look at you when you call his/her name?',['Always','Usually','Sometimes','Rarely','Never'] )
+    A1 = 1 if A1_selectbox == 'Sometimes'or 'Rarely' or 'Never' else 0
+
+
+    #A2
+    A2_selectbox = st.selectbox('Q2-How easy is it for you to get eye contact with your child?',['Very easy','Quite easy','Quite difficult','Very difficult','Impossible'])
+    A2 = 1 if A2_selectbox =='Quite difficult' or 'Very difficult'or 'Impossible'  else 0
+
+
+    #A3
+    A3_selectbox = st.selectbox('Q3-Does your child point to indicate that s/he wants something? (e.g. a toy that is ]out of reach) ',['Many times a day',' A few times a day', 'A few times a week', 'Less than once a week','Never' ])
+    A3 = 1 if A3_selectbox =='A few times a week' or 'Less than once a week' or 'Never' else 0
+
+
+    #A4
+    A4_selectbox = st.selectbox('Q4-Does your child point to share interest with you? (e.g. pointing at an interesting sight)  ',['Many times a day',' A few times a day', 'A few times a week', 'Less than once a week','Never' ])
+    A4 = 1 if A4_selectbox == 'A few times a week' or 'Less than once a week' or 'Never' else 0
+
+    #A5
+    A5_selectbox = st.selectbox('Q5-Does your child pretend? (e.g. care for dolls, talk on a toy phone)',['Many times a day',' A few times a day', 'A few times a week', 'Less than once a week','Never' ])
+    A5 = 1 if A5_selectbox =='A few times a week' or 'Less than once a week' or 'Never' else 0
+
+    #A6
+    A6_selectbox = st.selectbox('Q6-Does your child follow where you’re looking?  ',['Many times a day',' A few times a day', 'A few times a week', 'Less than once a week','Never' ])
+    A6 = 1 if A6_selectbox =='A few times a week' or 'Less than once a week' or 'Never' else 0
+
+
+    #A7
+    A7_selectbox = st.selectbox('Q7-If you or someone else in the family is visibly upset, does your child show signs of wanting to comfort them?  (e.g. stroking hair, hugging them)  ',['Always', 'Usually', 'Sometimes' , 'Rarely', 'Never']) 
+    A7 = 1 if A7_selectbox == 'Sometimes' or 'Rarely' or 'Never'else 0
+
+
+    #A8
+    A8_selectbox = st.selectbox('Q8-Would you describe your child’s first words as:',['Very typical','Quite typical','Slightly unusual','Very unusual', 'My child doesn’t speak' ])
+    A8 = 1 if A8_selectbox =='Slightly unusual'or'Very unusual' or'My child doesn’t speak' else 0
+
+
+    #A9
+    A9_selectbox = st.selectbox('Q9-Does your child use simple gestures?  (e.g. wave goodbye)',['Many times a day',' A few times a day', 'A few times a week', 'Less than once a week','Never' ])
+    A9 = 1 if A9_selectbox == 'A few times a week' or 'Less than once a week' or 'Never' else 0
+
+
+    #A10
+    A10_selectbox = st.selectbox('Q10-Does your child stare at nothing with no apparent purpose?',['Many times a day',' A few times a day', 'A few times a week', 'Less than once a week','Never' ])
+    A10 = 1 if A10_selectbox == 'Many times a day'or' A few times a day'or 'A few times a week' else 0
+
+
+    #score
+    Qchat_10_score=A1+A2+A3+A4+A5+A6+A7+A8+A9+A10
+
+
+    #PREDICTION
+    if st.button('PREDICT'):
+        # form a dataframe
+        data=[[A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,Age_Mons,Qchat_10_score,Sex,Ethnicity,Jaundice,Family_mem_with_ASD,who_completed_the_test,relation]]
+        columns=['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','Age_Mons','Qchat-10-Score','Sex','Ethnicity','Jaundice','Family_mem_with_ASD','Who completed the test']
+        # Convert to DataFrame
+        one_df = pd.DataFrame(data, columns=columns)
+        # predict
+        prediction=pipeline4.predict(one_df)[0]
+        if prediction=='YES':
+            st.text("The model predicts that the child has Autism Spectrum Disorder (ASD).")
+        else:
+            st.text("The model predicts that the child does not have Autism Spectrum Disorder (ASD).")
