@@ -379,7 +379,6 @@ if age_category=='TODDLER(1-3 YEARS)':
 
     with open('module_1_pipeline_toddler.pkl','rb') as file:
         pipeline5 = pickle.load(file)
-
     st.subheader('To proceed,complete the:green[Assessment Form] and provide relevant inputs', divider='blue')
     #score
     #age
